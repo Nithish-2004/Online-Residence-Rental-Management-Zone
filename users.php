@@ -1,5 +1,5 @@
 <?php
-	require '../config/config.php';
+	require_once 'config.php';
 	if(empty($_SESSION['username']))
 		header('Location: login.php');	
 
@@ -13,7 +13,7 @@
 		}	
 		// print_r($data);	
 ?>
-<?php include '../include/header.php';?>
+<?php include 'header.php';?>
 	<!-- Header nav -->	
 	<nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#212529;" id="mainNav">
       <div class="container">
@@ -35,7 +35,7 @@
       </div>
     </nav>
 	<!-- end header nav -->
-<?php include '../include/side-nav.php';?>
+<?php include 'side-nav.php';?>
 <section class="wrapper" style="margin-inline-start:16%;margin-block-start: -11%;">
 	<div class="container">
 		<div class="row">
@@ -79,4 +79,4 @@
 		</div>
 	</div>
 </section>
-<?php include '../include/footer.php';?>
+<?php include 'footer.php';?>
