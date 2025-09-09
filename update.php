@@ -22,17 +22,20 @@
 					echo '<div style="color:#FF0000;text-align:center;font-size:17px;">'.$errMsg.'</div>';
 				}
 			?>
-			<div style="background-color:#006D9C; color:#FFFFFF; padding:10px;"><b><?php echo $_SESSION['fullname'] ?></b></div>
+			<div style="background-color:#006D9C; color:#FFFFFF; padding:10px;"><b><?php echo $_SESSION['name'] ?></b></div>
 			<div style="margin: 15px">
 				<form action="" method="post">
 					Fullname <br>
-					<input type="text" name="fullname" value="<?php echo $_SESSION['fullname']; ?>" autocomplete="off" class="box"/><br /><br />
+					<input type="text" name="fullname" value="<?php echo $_SESSION['name']; ?>" autocomplete="off" class="box"/><br /><br />
 					Username <br>
 					<input type="text" name="username" value="<?php echo $_SESSION['username']; ?>" disabled autocomplete="off" class="box"/><br /><br />
 					Secret Pin <br>
-					<input type="text" name="secretpin" value="" autocomplete="off" class="box"/><br /><br />
+					<input type="text" name="secretpin" value="<?php echo $_SESSION['secretpin']; ?>" autocomplete="off" class="box"/><br /><br />
 					<hr>
-					<!-- Password fields removed for security -->
+					Password <br>
+					<input type="password" name="password" value="<?php echo $_SESSION['password'] ?>" class="box" /><br/><br />
+					Vafify Password <br>
+					<input type="password" name="passwordVarify" value="<?php echo $_SESSION['password'] ?>" class="box" /><br/><br />
 					<input type="submit" name='update' value="Update" class='submit'/><br />
 				</form>
 			</div>
