@@ -1,5 +1,5 @@
 <?php
-	require_once 'config.php';
+	require '../config/config.php';
 	if(empty($_SESSION['username']))
 		header('Location: login.php');
 
@@ -30,7 +30,7 @@
 		));
 	$total_auth_user_rent_ap = $stmt->fetch(PDO::FETCH_ASSOC);
 ?>
-<?php include 'header.php';?>
+<?php include '../include/header.php';?>	
 	<!-- Header nav -->	
 	<nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#212529;" id="mainNav">
       <div class="container">
@@ -52,7 +52,7 @@
       </div>
     </nav>
 	<!-- end header nav -->	
-<?php include 'side-nav.php';?>
+<?php include '../include/side-nav.php';?>
 	<section class="wrapper" style="margin-left: 16%;margin-top: -11%;">
 		<!-- <div class="container"> -->
 			<!-- <div class="row"> -->
@@ -62,7 +62,7 @@
 						<?php 
 							if($_SESSION['role'] == 'admin'){ 
 								echo '<div class="col-md-3">';
-								echo '<a href="users.php"><div class="alert alert-warning" role="alert">';
+								echo '<a href="../app/users.php"><div class="alert alert-warning" role="alert">';
 								echo '<b>Registered Users: <span class="badge badge-pill badge-success">'.$count['register_user'].'</span></b>';
 								echo '</div></a>';
 								echo '</div>';
@@ -71,7 +71,7 @@
 						<?php 
 							if($_SESSION['role'] == 'admin'){ 
 								echo '<div class="col-md-3">';
-								echo '<a href="list.php"><div class="alert alert-warning" role="alert">';
+								echo '<a href="../app/list.php"><div class="alert alert-warning" role="alert">';
 								echo '<b>Rooms for Rent: <span class="badge badge-pill badge-success">'.(intval($total_rent['total_rent'])+intval($total_rent_apartment['total_rent_apartment'])).'</span></b>';
 								echo '</div></a>';
 								echo '</div>';
@@ -80,7 +80,7 @@
 						<?php 
 							if($_SESSION['role'] == 'user'){ 
 								echo '<div class="col-md-3">';
-								echo '<a href="list.php"><div class="alert alert-warning" role="alert">';
+								echo '<a href="../app/list.php"><div class="alert alert-warning" role="alert">';
 								echo '<b>Registered Rooms: <span class="badge badge-pill badge-success">'.$total_auth_user_rent['total_auth_user_rent'].'</span></b>';
 								echo '</div></a>';
 								echo '</div>';
@@ -91,4 +91,4 @@
 			<!-- </div> -->
 		<!-- </div> -->
 	</section>
-<?php include 'footer.php';?>
+<?php include '../include/footer.php';?>

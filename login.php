@@ -1,5 +1,5 @@
 <?php
-	require_once 'config.php';
+	require '../config/config.php';
 	
 	if(isset($_POST['login'])) {
 
@@ -20,32 +20,13 @@
 				$errMsg = "User $username not found.";
 			}
 			else {
-				if (password_verify($password, $data['password'])) {
+				if(md5($password) == $data['password']) {
 					$_SESSION['id'] = $data['id'];
 					$_SESSION['username'] = $data['username'];
 					$_SESSION['fullname'] = $data['fullname'];
 					$_SESSION['role'] = $data['role'];
-					if (!defined('TEST_MODE')) {
-						header('Location: dashboard.php');
-						exit;
-					}
-				} else if (md5($password) == $data['password']) {
-					// Old md5 password matched, rehash and update it
-					$newHashedPassword = password_hash($password, PASSWORD_DEFAULT);
-					$updateStmt = $connect->prepare('UPDATE users SET password = :password WHERE id = :id');
-					$updateStmt->execute(array(
-						':password' => $newHashedPassword,
-						':id' => $data['id']
-					));
-
-					$_SESSION['id'] = $data['id'];
-					$_SESSION['username'] = $data['username'];
-					$_SESSION['fullname'] = $data['fullname'];
-					$_SESSION['role'] = $data['role'];
-					if (!defined('TEST_MODE')) {
-						header('Location: dashboard.php');
-						exit;
-					}
+					header('Location: dashboard.php');
+					exit;
 				}
 				else
 					$errMsg = 'Password not match.';
@@ -57,7 +38,7 @@
 	}
 ?>
 
-<?php include 'header.php';?>
+<?php include '../include/header.php';?>
 	<!-- Services -->
 	<nav class="navbar navbar-expand-lg navbar-dark" style="background-color:#212529;" id="mainNav">
       <div class="container">
@@ -106,4 +87,4 @@
 			</div>
 		</div>
 	</section>
-<?php include 'footer.php';?>
+<?php include '../include/footer.php';?>
